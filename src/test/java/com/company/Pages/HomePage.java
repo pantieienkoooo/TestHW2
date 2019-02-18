@@ -21,17 +21,18 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class HomePage extends BasePage {
-    @FindBy(xpath = "/html/body/div[1]/header/div/div/div[2]/div[2]/nav/ul/li[8]/a")
+    @FindBy(xpath = ".//a[contains(@href, 'contacts')]")
     private WebElement pureMenuLink;
     @FindBy(xpath = "//li/a[contains(@title, 'UA')]")
     private WebElement uaClick;
-    @FindBy(xpath = "//li/a[contains(@title, 'EN')]")//en
+    @FindBy(xpath = "//li/a[contains(@title, 'en')]")//en
     private WebElement enClick;
     @FindBy(xpath = "//li/a[contains(@title, 'ru')]")//ru
     private WebElement ruClick;
     @FindBy(xpath = "/html/body/section[2]/div[2]/div[1]/div")
     private WebElement contacts;
-
+    @FindBy(xpath = ".//*[@id='locale-link']/parent::li")
+    private WebElement clickLocale;
 
     public void getLocale(String locale) {
         String xp = "//li/a[contains(@title, '" + locale + "')]";
@@ -47,8 +48,7 @@ public class HomePage extends BasePage {
     public void uaClickPage() {
         uaClick.click();
     }
-
-    public void ruClickPage() {
+     public void ruClickPage() {
         ruClick.click();
     }
 
@@ -56,6 +56,7 @@ public class HomePage extends BasePage {
         enClick.click();
     }
 
+    public void localeClick(){clickLocale.click();}
     /*public void ClickPage(WebElement elem, String locale) {
         elem = getLocale(locale);
         elem.click();
@@ -63,7 +64,7 @@ public class HomePage extends BasePage {
 
     public void saveFile(String locale) throws IOException {
         ArrayList<String> resultText = new ArrayList<String>();
-        List<WebElement> elements = driver.findElements(By.xpath("/html/body/section[2]/div[2]/div[1]/div"));
+        List<WebElement> elements = driver.findElements(By.xpath(".//*[@id='section-contacts']/div[2]/div[1]/div"));
         for (WebElement element : elements) {
             System.out.println(element.getText());
             resultText.add(element.getText());
