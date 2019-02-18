@@ -43,23 +43,12 @@ public class MyTest extends BaseTest {
 
     public void getAddress(String locale) throws InterruptedException, IOException {
         app.homePage.search();
-        //app.homePage.localeClick();
-        //  app.homePage.uaClickPage();
-        // app.homePage.getLocale(locale);
+
         Thread.sleep(1000);
         app.homePage.localeClick();
         app.homePage.getLocale(locale);
          app.homePage.saveFile(locale);
         app.homePage.compareFiles(locale);
-
-
-        /*app.homePage.saveFile(locale);
-        app.homePage.compareFiles(locale);
-        app.homePage.localeClick();
-        app.homePage.getLocale(locale);
-        app.homePage.saveFile(locale);
-        app.homePage.compareFiles(locale);
-        app.homePage.closeApp();*/
 
     }
 

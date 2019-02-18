@@ -23,16 +23,12 @@ import static org.junit.Assert.assertEquals;
 public class HomePage extends BasePage {
     @FindBy(xpath = ".//a[contains(@href, 'contacts')]")
     private WebElement pureMenuLink;
-    @FindBy(xpath = "//li/a[contains(@title, 'UA')]")
-    private WebElement uaClick;
-    @FindBy(xpath = "//li/a[contains(@title, 'en')]")//en
-    private WebElement enClick;
-    @FindBy(xpath = "//li/a[contains(@title, 'ru')]")//ru
-    private WebElement ruClick;
     @FindBy(xpath = "/html/body/section[2]/div[2]/div[1]/div")
     private WebElement contacts;
     @FindBy(xpath = ".//*[@id='locale-link']/parent::li")
     private WebElement clickLocale;
+    @FindBy(xpath = ".//*[@id='section-contacts']/div[2]/div[1]/div")
+    private List<WebElement> elements;
 
     public void getLocale(String locale) {
         String xp = "//li/a[contains(@title, '" + locale + "')]";
@@ -45,26 +41,12 @@ public class HomePage extends BasePage {
         pureMenuLink.click();
     }
 
-    public void uaClickPage() {
-        uaClick.click();
+    public void localeClick() {
+        clickLocale.click();
     }
-     public void ruClickPage() {
-        ruClick.click();
-    }
-
-    public void enClickPage() {
-        enClick.click();
-    }
-
-    public void localeClick(){clickLocale.click();}
-    /*public void ClickPage(WebElement elem, String locale) {
-        elem = getLocale(locale);
-        elem.click();
-    }*/
 
     public void saveFile(String locale) throws IOException {
         ArrayList<String> resultText = new ArrayList<String>();
-        List<WebElement> elements = driver.findElements(By.xpath(".//*[@id='section-contacts']/div[2]/div[1]/div"));
         for (WebElement element : elements) {
             System.out.println(element.getText());
             resultText.add(element.getText());

@@ -9,12 +9,6 @@ import java.io.IOException;
 import static com.company.Common.Constans.BASE_URL;
 
 public class HomeHelper extends HomePage {
-//    WebDriver wait = new WebDriver(driver, 60);
-
-
-        /* public void resultList() throws IOException{
-             result();
-         }*/
         public void closeApp() {
             driver.quit();
         }
